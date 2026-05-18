@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Read | My Blog</title>
+    <meta name="description" content="Read a post from My Blog.">
+    <meta property="og:title" content="Read | My Blog">
+    <meta property="og:description" content="Read a post from My Blog.">
+    <link rel="stylesheet" href="Source/Styles/index.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="back" href="index.html"><i class="ph ph-arrow-left"></i>All posts</a>
+        <div class="actions">
+            <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"><i
+                    class="ph ph-moon"></i></button>
+            <a class="btn" id="authButton" href="auth.html"><i class="ph ph-sign-in"></i><span>Login</span></a>
+        </div>
+    </header>
+
+    <main class="wrap narrow">
+        <article id="article" class="article"></article>
+
+        <section class="panel" id="reactionPanel">
+            <div class="section-head">
+                <h2>Reactions</h2>
+            </div>
+            <div id="reactions" class="reactions"></div>
+        </section>
+
+        <section class="panel" id="commentsPanel">
+            <div class="section-head">
+                <h2><i class="ph ph-chat-circle"></i>Comments</h2>
+            </div>
+            <form id="commentForm" class="comment-form">
+                <textarea id="commentText" rows="4" maxlength="1200" placeholder="Add a comment"></textarea>
+                <div class="form-row">
+                    <p class="muted" id="commentHelp">Sign in to comment.</p>
+                    <button class="btn primary" type="submit">Post</button>
+                </div>
+            </form>
+            <div id="comments" class="comments"></div>
+        </section>
+    </main>
+
+    <script type="module" src="Source/Scripts/index.js"></script>
+</body>
+
+</html>

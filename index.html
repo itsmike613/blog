@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Blog</title>
+    <meta name="description" content="A compact personal blog about construction, politics, and everyday ideas.">
+    <link rel="stylesheet" href="Source/Styles/index.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+</head>
+
+<body>
+    <header class="site-header">
+        <div>
+            <a class="brand" href="index.html">My Blog</a>
+            <p class="muted">Notes on work, civic life, and ideas worth keeping.</p>
+        </div>
+        <div class="actions">
+            <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"><i
+                    class="ph ph-moon"></i></button>
+            <a class="btn" id="authButton" href="auth.html"><i class="ph ph-sign-in"></i><span>Login</span></a>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="intro">
+            <h1>Personal archive</h1>
+            <p>A small, structured place for field notes, arguments, and observations. Browse pinned posts first or sort
+                the archive below.</p>
+        </section>
+
+        <section id="pinnedSection" class="section">
+            <div class="section-head">
+                <h2>Pinned</h2>
+            </div>
+            <div id="pinnedPosts" class="grid"></div>
+        </section>
+
+        <section class="section">
+            <div class="section-head">
+                <h2>All posts</h2>
+                <div class="sorts" aria-label="Sort posts">
+                    <button class="sort active" data-sort="recommended" type="button">Recommended</button>
+                    <button class="sort" data-sort="newest" type="button">Newest</button>
+                    <button class="sort" data-sort="oldest" type="button">Oldest</button>
+                </div>
+            </div>
+            <div id="postGrid" class="grid"></div>
+        </section>
+    </main>
+
+    <script type="module" src="Source/Scripts/index.js"></script>
+</body>
+
+</html>
