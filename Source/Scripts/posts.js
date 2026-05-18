@@ -9,7 +9,7 @@ export const posts = [
         recommendedOrder: 1,
         content: `
             <h2>Welcome to My Blog</h2>
-            <p>Welcome to my blog! I am itsmike613, but you can call me Mike. I am a student with a lot of interests, thoughts, and experiences I want to write about.</p>
+            <p>I am itsmike613, but you can call me Mike. I am a student with a lot of interests, thoughts, and experiences I want to write about.</p>
 
             <h2>Why I Am Starting This Blog</h2>
             <p>I have been thinking about starting this blog for quite some time, and recently I finally got the push to do it. Everyone has their own reasons for starting a blog, but for me, it comes down to four main reasons:</p>
