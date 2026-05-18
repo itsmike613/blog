@@ -4,11 +4,12 @@ import { auth, db, provider, signInWithPopup, onAuthStateChanged, signOut, doc, 
 const $ = (q, root = document) => root.querySelector(q);
 const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 const reactions = [
-    ["like", "👍", "General positive"],
-    ["thoughtful", "💭", "Made me think"],
-    ["watching", "👀", "Interesting / watching"],
-    ["strong", "🔥", "Strong take"],
-    ["appreciate", "❤️", "Appreciate this"]
+    ["love", "❤️", "I love this"],
+    ["like", "👍", "I like this"],
+    ["learned", "📙", "I learned something"],
+    ["thoughtful", "💭", "This made me think"],
+    ["debate", "🔄", "Worth discussing"],
+    ["disagree", "👎", "I disagree with this"]
 ];
 let user = null;
 
