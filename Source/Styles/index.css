@@ -2,8 +2,8 @@
     color-scheme: light;
     --bg: #f8f7f4;
     --panel: #fffefb;
-    --text: #1e1e1b;
-    --muted: #686861;
+    --text: #22221f;
+    --muted: #696961;
     --border: #dedbd2;
     --soft: #efede6;
     --accent: #2f5f4f;
@@ -16,7 +16,7 @@
     color-scheme: dark;
     --bg: #171817;
     --panel: #20211f;
-    --text: #eeeeea;
+    --text: #ecece7;
     --muted: #aaa99f;
     --border: #363832;
     --soft: #292b27;
@@ -31,14 +31,17 @@
 }
 
 html {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px
 }
 
 body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.5
+    line-height: 1.45;
+    font-weight: 400;
+    text-rendering: optimizeLegibility
 }
 
 a {
@@ -63,33 +66,33 @@ button {
 .site-header {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 16px 18px;
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
     align-items: center;
     border-bottom: 1px solid var(--border)
 }
 
 .brand {
-    font-weight: 750;
-    letter-spacing: -.02em;
-    font-size: 1.25rem
+    font-weight: 650;
+    letter-spacing: -.015em;
+    font-size: 1.08rem
+}
+
+.site-note {
+    font-size: .92rem;
+    margin-top: 2px
 }
 
 .wrap {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 28px 20px 48px
+    padding: 18px 18px 40px
 }
 
 .narrow {
-    max-width: 760px
-}
-
-.intro {
-    max-width: 680px;
-    margin-bottom: 28px
+    max-width: 720px
 }
 
 h1,
@@ -100,27 +103,34 @@ p {
 }
 
 h1 {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    line-height: 1.1;
-    margin-bottom: 10px;
-    letter-spacing: -.04em
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -.03em;
+    font-weight: 650
 }
 
 h2 {
-    font-size: 1rem;
+    font-size: .95rem;
     margin: 0;
-    letter-spacing: -.02em
+    letter-spacing: -.01em;
+    font-weight: 650
 }
 
 h3 {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
-    letter-spacing: -.02em
+    font-size: .98rem;
+    line-height: 1.25;
+    margin-bottom: 5px;
+    letter-spacing: -.01em;
+    font-weight: 620
+}
+
+p {
+    margin-bottom: 0
 }
 
 .muted {
-    color: var(--muted);
-    margin-bottom: 0
+    color: var(--muted)
 }
 
 .actions,
@@ -130,7 +140,7 @@ h3 {
 .vote-row {
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 8px
 }
 
 .actions {
@@ -138,29 +148,33 @@ h3 {
 }
 
 .section {
-    margin-top: 30px
+    margin-top: 24px
+}
+
+.first-section {
+    margin-top: 0
 }
 
 .section-head {
     justify-content: space-between;
-    margin-bottom: 12px
+    margin-bottom: 10px
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-    gap: 12px
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px
 }
 
 @media (min-width:1500px) {
 
     .site-header,
     .wrap {
-        max-width: 1420px
+        max-width: 1360px
     }
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(245px, 1fr))
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr))
     }
 }
 
@@ -170,13 +184,13 @@ h3 {
 .auth-card {
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 8px
+    border-radius: 7px
 }
 
 .card {
     display: block;
-    padding: 14px;
-    transition: transform .15s ease, border-color .15s ease, background .15s ease
+    padding: 11px;
+    transition: transform .12s ease, border-color .12s ease, background .12s ease
 }
 
 .card:hover {
@@ -191,30 +205,32 @@ h3 {
 }
 
 .card-title .ph {
-    margin-top: 3px;
-    color: var(--accent)
+    margin-top: 2px;
+    color: var(--accent);
+    font-size: .95rem
 }
 
 .tags {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
-    margin: 10px 0
+    margin: 9px 0
 }
 
 .tag {
-    font-size: .8rem;
+    font-size: .76rem;
+    line-height: 1.2;
     color: var(--muted);
     background: var(--soft);
     border: 1px solid var(--border);
     border-radius: 999px;
-    padding: 2px 7px
+    padding: 2px 6px
 }
 
 .meta {
-    font-size: .84rem;
+    font-size: .78rem;
     color: var(--muted);
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap
 }
 
@@ -222,6 +238,10 @@ h3 {
     display: inline-flex;
     align-items: center;
     gap: 4px
+}
+
+.meta .ph {
+    font-size: .9rem
 }
 
 .btn,
@@ -233,27 +253,30 @@ h3 {
     border: 1px solid var(--border);
     background: var(--panel);
     color: var(--text);
-    border-radius: 7px;
-    min-height: 36px;
+    border-radius: 6px;
+    min-height: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    transition: background .15s ease, border-color .15s ease, transform .15s ease
+    gap: 5px;
+    line-height: 1;
+    transition: background .12s ease, border-color .12s ease, transform .12s ease
 }
 
 .btn {
-    padding: 0 12px
+    padding: 0 10px;
+    font-size: .88rem
 }
 
 .icon-btn {
-    width: 38px
+    width: 32px;
+    font-size: .95rem
 }
 
 .sort {
-    min-height: 32px;
-    padding: 0 10px;
-    font-size: .9rem
+    min-height: 28px;
+    padding: 0 9px;
+    font-size: .84rem
 }
 
 .sort.active,
@@ -283,48 +306,53 @@ h3 {
 .back {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: var(--muted)
+    gap: 5px;
+    color: var(--muted);
+    font-size: .9rem
 }
 
 .article {
-    padding: 24px;
-    margin-bottom: 14px
+    padding: 17px;
+    margin-bottom: 12px
 }
 
 .article header {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-    margin-bottom: 20px
-}
-
-.article-body {
-    font-size: 1.05rem
-}
-
-.article-body p {
+    padding-bottom: 13px;
     margin-bottom: 16px
 }
 
+.article-body {
+    font-size: .96rem;
+    line-height: 1.55
+}
+
+.article-body p {
+    margin-bottom: 13px
+}
+
 .article-body h2 {
-    font-size: 1.25rem;
-    margin: 28px 0 10px
+    font-size: 1.08rem;
+    margin: 22px 0 8px;
+    font-weight: 650
 }
 
 .panel {
-    padding: 16px;
-    margin-top: 14px
+    padding: 13px;
+    margin-top: 12px
 }
 
 .reactions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px
+    gap: 6px
 }
 
 .reaction {
     position: relative;
-    padding: 0 10px
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: .86rem
 }
 
 .reaction::after {
@@ -335,9 +363,9 @@ h3 {
     transform: translateX(-50%);
     background: var(--text);
     color: var(--panel);
-    border-radius: 6px;
+    border-radius: 5px;
     padding: 4px 7px;
-    font-size: .75rem;
+    font-size: .72rem;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none
@@ -349,7 +377,7 @@ h3 {
 }
 
 .comment-form {
-    margin-bottom: 16px
+    margin-bottom: 13px
 }
 
 textarea {
@@ -358,31 +386,37 @@ textarea {
     background: var(--bg);
     color: var(--text);
     border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 10px
+    border-radius: 6px;
+    padding: 9px;
+    font-size: .92rem;
+    line-height: 1.45
 }
 
 .form-row {
     justify-content: space-between;
-    margin-top: 8px
+    margin-top: 7px
+}
+
+#commentHelp {
+    font-size: .82rem
 }
 
 .comments {
     display: grid;
-    gap: 10px
+    gap: 9px
 }
 
 .comment {
     border-top: 1px solid var(--border);
-    padding-top: 12px
+    padding-top: 10px
 }
 
 .comment-head {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     align-items: flex-start;
-    margin-bottom: 8px
+    margin-bottom: 7px
 }
 
 .person {
@@ -392,37 +426,40 @@ textarea {
 }
 
 .avatar {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: var(--soft);
     border: 1px solid var(--border);
     object-fit: cover;
     display: grid;
     place-items: center;
-    font-size: .78rem;
+    font-size: .72rem;
     color: var(--muted)
 }
 
 .name {
-    font-weight: 650
+    font-weight: 620;
+    font-size: .9rem
 }
 
 .date {
-    font-size: .82rem;
+    font-size: .76rem;
     color: var(--muted)
 }
 
 .comment p {
     white-space: pre-wrap;
-    margin-bottom: 8px
+    margin-bottom: 7px;
+    font-size: .92rem;
+    line-height: 1.45
 }
 
 .vote,
 .delete-btn {
-    min-height: 30px;
-    padding: 0 8px;
-    font-size: .86rem
+    min-height: 26px;
+    padding: 0 7px;
+    font-size: .8rem
 }
 
 .delete-btn {
@@ -430,15 +467,15 @@ textarea {
 }
 
 .auth-card {
-    max-width: 380px;
+    max-width: 350px;
     margin: 12vh auto;
-    padding: 22px;
+    padding: 18px;
     display: grid;
-    gap: 14px
+    gap: 12px
 }
 
 .auth-card h1 {
-    margin: 4px 0 0
+    margin: 2px 0 0
 }
 
 .wide {
@@ -447,4 +484,31 @@ textarea {
 
 .hidden {
     display: none !important
+}
+
+@media (max-width:640px) {
+    html {
+        font-size: 14px
+    }
+
+    .site-header {
+        padding: 14px;
+        align-items: flex-start
+    }
+
+    .wrap {
+        padding: 16px 14px 34px
+    }
+
+    .section-head {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column
+    }
+
+    .sorts {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap
+    }
 }
