@@ -16,23 +16,26 @@ let user = null;
 function words(html) {
     return html.replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
 }
+
 function readingTime(post) {
     return Math.max(1, Math.ceil(words(post.content) / 220));
 }
+
 function formatDate(value) {
     return new Date(value + "T00:00:00").toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
 }
+
 function postCard(post) {
-    return `<a class="card" href="read.html?post=${encodeURIComponent(post.id)}">
-    <div class="card-title">${post.pinned ? `<i class="ph ph-push-pin-simple" aria-hidden="true"></i>` : ""}<h3>${post.title}</h3></div>
-    <p class="muted">${post.description}</p>
-    <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
-    <div class="meta">
-      <span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span>
-      <span><i class="ph ph-book-open"></i>${readingTime(post)} min</span>
-    </div>
-  </a>`;
+    return `
+        <a class="card" href="read.html?post=${encodeURIComponent(post.id)}">
+            <div class="card-title">${post.pinned ? `<i class="ph ph-push-pin-simple" aria-hidden="true"></i>` : ""}<h3>${post.title}</h3></div>
+            <p class="muted">${post.description}</p>
+            <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
+            <div class="meta"><span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span><span><i class="ph ph-book-open"></i>${readingTime(post)} min</span></div>
+        </a>
+    `;
 }
+
 function sortPosts(mode) {
     const copy = posts.filter(p => !p.pinned);
     if (mode === "newest") copy.sort((a, b) => b.date.localeCompare(a.date));
@@ -40,6 +43,7 @@ function sortPosts(mode) {
     else copy.sort((a, b) => a.recommendedOrder - b.recommendedOrder);
     return copy;
 }
+
 function setupTheme() {
     const saved = localStorage.getItem("theme");
     const theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -51,18 +55,22 @@ function setupTheme() {
         updateThemeIcon();
     });
 }
+
 function updateThemeIcon() {
     const icon = $("#themeToggle i");
     if (icon) icon.className = `ph ph-${document.documentElement.dataset.theme === "dark" ? "sun" : "moon"}`;
 }
+
 function authRedirect() {
     return `auth.html?redirect=${encodeURIComponent(location.pathname.split("/").pop() + location.search)}`;
 }
+
 function requireUser() {
     if (user) return true;
     location.href = authRedirect();
     return false;
 }
+
 function setupAuthButton() {
     onAuthStateChanged(auth, current => {
         user = current;
@@ -86,6 +94,7 @@ function setupAuthButton() {
         updateCommentState();
     });
 }
+
 function renderHome() {
     const pinned = posts.filter(p => p.pinned).sort((a, b) => a.recommendedOrder - b.recommendedOrder);
     $("#pinnedPosts").innerHTML = pinned.map(postCard).join("");
@@ -97,32 +106,38 @@ function renderHome() {
         render(btn.dataset.sort);
     }));
 }
+
 function currentPost() {
     const id = new URLSearchParams(location.search).get("post");
     return posts.find(p => p.id === id) || posts[0];
 }
+
 function renderRead() {
     const post = currentPost();
     document.title = `${post.title} | My Blog`;
     setMeta("description", post.description);
     setMeta("og:title", post.title, true);
     setMeta("og:description", post.description, true);
-    $("#article").innerHTML = `<header>
-    <h1>${post.title}</h1>
-    <p class="muted">${post.description}</p>
-    <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
-    <div class="meta">
-      <span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span>
-      <span><i class="ph ph-book-open"></i>${readingTime(post)} min</span>
-    </div>
-  </header>
-  <div class="article-body">${post.content}</div>`;
+    $("#article").innerHTML = `
+        <header>
+            <h1>${post.title}</h1>
+            <p class="muted">${post.description}</p>
+            <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
+            <div class="meta">
+                <span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span>
+                <span><i class="ph ph-book-open"></i>${readingTime(post)} min</span>
+            </div>
+        </header>
+        <div class="article-body">${post.content}</div>
+    `;
 }
+
 function setMeta(name, content, property = false) {
     const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
     const meta = $(selector);
     if (meta) meta.content = content;
 }
+
 function loadReactions() {
     const post = currentPost();
     onSnapshot(collection(db, "posts", post.id, "reactions"), snap => {
@@ -140,6 +155,7 @@ function loadReactions() {
         }));
     });
 }
+
 function updateCommentState() {
     const form = $("#commentForm");
     if (!form) return;
@@ -147,6 +163,7 @@ function updateCommentState() {
     $("button[type='submit']", form).disabled = !user;
     $("#commentHelp").textContent = user ? "One comment per post. Delete it to post again." : "Sign in to comment.";
 }
+
 function loadComments() {
     const post = currentPost();
     onSnapshot(collection(db, "posts", post.id, "comments"), snap => {
@@ -165,22 +182,26 @@ function loadComments() {
         }));
     });
 }
+
 function commentHtml(c) {
     const mine = user && c.uid === user.uid;
     const avatar = c.photoURL ? `<img class="avatar" src="${c.photoURL}" alt="">` : `<span class="avatar">${initials(c.name)}</span>`;
     const date = c.createdAt?.seconds ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : "";
-    return `<div class="comment">
-    <div class="comment-head">
-      <div class="person">${avatar}<div><div class="name">${escapeHtml(c.name || "Reader")}</div><div class="date">${date}</div></div></div>
-      ${mine ? `<button class="delete-btn" data-uid="${c.uid}" type="button"><i class="ph ph-trash"></i>Delete</button>` : ""}
-    </div>
-    <p>${escapeHtml(c.text || "")}</p>
-    <div class="vote-row" id="votes-${c.id}">
-      <button class="vote" data-comment="${c.id}" data-type="like" type="button">👍 0</button>
-      <button class="vote" data-comment="${c.id}" data-type="dislike" type="button">👎 0</button>
-    </div>
-  </div>`;
+    return `
+        <div class="comment">
+            <div class="comment-head">
+                <div class="person">${avatar}<div><div class="name">${escapeHtml(c.name || "Reader")}</div><div class="date">${date}</div></div></div>
+                ${mine ? `<button class="delete-btn" data-uid="${c.uid}" type="button"><i class="ph ph-trash"></i>Delete</button>` : ""}
+            </div>
+            <p>${escapeHtml(c.text || "")}</p>
+            <div class="vote-row" id="votes-${c.id}">
+                <button class="vote" data-comment="${c.id}" data-type="like" type="button">👍 0</button>
+                <button class="vote" data-comment="${c.id}" data-type="dislike" type="button">👎 0</button>
+            </div>
+        </div>
+    `;
 }
+
 function loadVotes(postId, commentId) {
     onSnapshot(collection(db, "posts", postId, "comments", commentId, "votes"), snap => {
         const counts = { like: 0, dislike: 0 };
@@ -204,6 +225,7 @@ function loadVotes(postId, commentId) {
         }));
     });
 }
+
 function setupCommentForm() {
     $("#commentForm")?.addEventListener("submit", async e => {
         e.preventDefault();
@@ -221,6 +243,7 @@ function setupCommentForm() {
         $("#commentText").value = "";
     });
 }
+
 function setupAuthPage() {
     const params = new URLSearchParams(location.search);
     const redirect = params.get("redirect") || "index.html";
@@ -230,9 +253,11 @@ function setupAuthPage() {
         location.href = redirect;
     });
 }
+
 function initials(name = "Reader") {
     return name.split(/\s+/).slice(0, 2).map(s => s[0]).join("").toUpperCase();
 }
+
 function escapeHtml(text) {
     const div = document.createElement("div");
     div.textContent = text;
@@ -242,8 +267,5 @@ function escapeHtml(text) {
 setupTheme();
 setupAuthButton();
 if ($("#postGrid")) renderHome();
-if ($("#article")) {
-    renderRead();
-    setupCommentForm();
-}
+if ($("#article")) { renderRead(); setupCommentForm(); }
 if ($("#googleSignIn")) setupAuthPage();
