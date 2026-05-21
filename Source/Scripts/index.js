@@ -31,7 +31,11 @@ function postCard(post) {
             <div class="card-title">${post.pinned ? `<i class="ph ph-push-pin-simple" aria-hidden="true"></i>` : ""}<h3>${post.title}</h3></div>
             <p class="muted">${post.description}</p>
             <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
-            <div class="meta"><span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span><span><i class="ph ph-book-open"></i>${readingTime(post)} min</span></div>
+            <div class="meta">
+                <span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span>
+                ${post.edited ? `<span><i class="ph ph-pencil-simple"></i>${formatDate(post.edited)}</span>` : ""}
+                <span><i class="ph ph-book-open"></i>${readingTime(post)} min</span>
+            </div>
         </a>
     `;
 }
@@ -125,6 +129,7 @@ function renderRead() {
             <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join("")}</div>
             <div class="meta">
                 <span><i class="ph ph-calendar-blank"></i>${formatDate(post.date)}</span>
+                ${post.edited ? `<span><i class="ph ph-pencil-simple"></i>${formatDate(post.edited)}</span>` : ""}
                 <span><i class="ph ph-book-open"></i>${readingTime(post)} min</span>
             </div>
         </header>

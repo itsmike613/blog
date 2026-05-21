@@ -4,6 +4,7 @@ export const posts = [
         title: "Welcome to My Blog",
         description: "What this place is, why I'm writing, and what to expect.",
         date: "2026-05-18",
+        edited: "2026-05-21",
         tags: ["personal", "welcome"],
         pinned: true,
         recommendedOrder: 1,
