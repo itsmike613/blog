@@ -6,10 +6,10 @@ const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 const reactions = [
     ["love", "❤️", "I love this"],
     ["like", "👍", "I like this"],
-    ["learned", "📙", "I learned something"],
+    ["disagree", "👎", "I disagree with this"],
     ["thoughtful", "💭", "This made me think"],
-    ["debate", "🔄", "Worth discussing"],
-    ["disagree", "👎", "I disagree with this"]
+    ["learned", "📙", "I learned something"],
+    ["debate", "🔄", "Worth discussing"]
 ];
 let user = null;
 
