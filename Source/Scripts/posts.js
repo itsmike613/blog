@@ -21,13 +21,14 @@ export const posts = [
             </ol>
 
             <h2>What You Should Expect</h2>
-            <p>I have a lot of ideas, opinions, and experiences that I want to share. The posts here will cover a mix of topics, including construction, interior design, U.S. politics, school, logic, reasoning, common sense, lessons I have learned the hard way, everyday observations, disagreements, questions, and more.</p>
+            <p>I have a lot of ideas, opinions, and experiences that I want to share. The posts here will cover a mix of topics, including construction, interior design, school, everyday observations, lessons I have learned the hard way, U.S. politics, logic, reasoning, common sense, disagreements, questions, and more.</p>
 
             <h2>My Tone and Approach</h2>
-            <p>I am not here to act like an expert on everything. I am writing from experience, curiosity, and my own perspective. I can be blunt and direct, but I can also be wrong. I am open to being challenged, and I care about logic, honesty, and thoughtful disagreement.</p>
+            <p>I am not here to act like an expert on everything. I am writing from experience, curiosity, and my own perspective. I can be blunt and direct, but I can also be wrong. I am open to being challenged, and I care about logic, honesty, and thoughtful disagreement. If you choose to disagree with a post in the comments, I ask that you provide the details and context behind your thinking so I can truly understand where you are coming from.</p>
+            <p>Additionally, because I built this website myself to keep the architecture clean and simple, I have not included a built-in notification or reply feature for the comment section. If you leave a comment and would like a response from me, please include a way for me to contact you; such as your Discord, X, Snapchat, or email; so I can reach out directly.</p>
 
             <h2>Thank You for Reading</h2>
-            <p>I do not know exactly where this blog will go, but I know why I am starting it: to write honestly, think clearly, and share what I learn along the way.</p>
+            <p>I do not know exactly where this blog will go, but I know why I am starting it: to write honestly, think clearly, and share what I learn along the way. My first official post will be live in a few days; until then, feel free to bookmark the page or introduce yourself in the comments below.</p>
         `
     }
 ];
